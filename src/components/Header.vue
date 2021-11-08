@@ -3,9 +3,10 @@
     <div class="container">
       <div class="header">
         <div class="header-left">
-          <a href="../../documents/html_mock/registerAdmin.html">
-            <img class="logo" src="img/header_logo.png"
-          /></a>
+          <router-link to="/registerAdmin"></router-link>
+          <!-- <a href="../../documents/html_mock/registerAdmin.html"> -->
+          <img class="logo" src="img/header_logo.png" />
+          <!-- </a> -->
         </div>
 
         <div class="header-right">

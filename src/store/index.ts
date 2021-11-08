@@ -1,11 +1,3 @@
-/**
- *Vuex ストア設定ファイル(今回は従業員情報を持たせる).
- *
- *@remarks
- *従業員⼀覧情報を持たせる
- *外部 WebAPI からの従業員情報取得
- */
-
 import Vue from "vue";
 import Vuex from "vuex";
 import { Employee } from "../types/employee";
@@ -13,6 +5,13 @@ import axios from "axios";
 
 Vue.use(Vuex);
 
+/**
+ *Vuex ストア設定ファイル(今回は従業員情報を持たせる).
+ *
+ *@remarks
+ *従業員⼀覧情報を持たせる
+ *外部 WebAPI からの従業員情報取得
+ */
 export default new Vuex.Store({
   strict: true,
   state: {
@@ -29,7 +28,6 @@ export default new Vuex.Store({
      *
      * @param context-ミューテーションを経由するために設定している引数
      */
-
     async getEmployeeList(context) {
       //1)
       const response = await axios.get(
@@ -48,13 +46,12 @@ export default new Vuex.Store({
      * 概要：従業員⼀覧情報を作成して state に格納する.
      *
      * @remarks
-     *1)payload(元データ)：totalEmployeeCountをtotalEmployeeCountに代⼊する
+     *1)payload(元データ)：payloadのtotalEmployeeCountをstateのtotalEmployeeCountに代⼊する
      *2)元データを回して、自分で作成した配列employeesに情報をpush
      *
      * @param state- stateの変数を利用するために設定している引数
-     * @param payload- astionから受け取っている、元データを格納している引数
+     * @param payload- (astionから受け取っている、元データを格納している引数)(JSON形式の従業員情報)
      */
-
     showEmployeeList(state, payload) {
       console.log("totalEmployeeCount:" + payload.totalEmployeeCount);
       //1)
@@ -81,13 +78,13 @@ export default new Vuex.Store({
       console.log("employees:" + state.employees);
     },
   }, // end mutations
-  /**
-   * 概要︓従業員数を返す.
-   *
-   * @param state -stateの変数を利用するために設定している引数
-   * @returns state 内の従業員⼀覧の件数を返す
-   */
   getters: {
+    /**
+     * 概要︓従業員数を返す.
+     *
+     * @param state -stateの変数を利用するために設定している引数
+     * @returns state 内の従業員⼀覧の件数を返す
+     */
     getEmployeeCount(state) {
       return state.totalEmployeeCount;
     },
