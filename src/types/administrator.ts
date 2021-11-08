@@ -1,8 +1,4 @@
-/**
- * 管理者用のクラスです
- *@remarks
- *詳細
- */
+/**管理者用のクラスです*/
 export class Administrator {
   constructor(
     //管理者のID
