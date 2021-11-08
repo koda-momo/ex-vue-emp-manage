@@ -24,8 +24,9 @@
             <div class="row">
               <div class="input-field col s12">
                 <i class="material-icons prefix">lock_outline</i>
-                <input id="password" type="password" />
+                <input id="password" type="password" v-model="password" />
                 <label for="password">パスワード</label>
+                {{ password }}
               </div>
             </div>
             <div class="row">
@@ -33,7 +34,7 @@
                 <button
                   type="button"
                   class="btn btn-register waves-effect waves-light col s12"
-                  v-on:click="loginAdmin"
+                  v-on:click="loginAdmin()"
                 >
                   ログイン
                 </button>
@@ -69,14 +70,13 @@ export default class LoginAdmin extends Vue {
   /**
    * 概要︓ログインをする.
    *@remarks
-   * axios を使⽤して WebAPI を呼ぶ
-   * response 内の data 内の status が
+   * 1)axios を使⽤して WebAPI を呼ぶ
+   * 2)response 内の data 内の status が
    *  →success ならログイン成功のため、従業員⼀覧画⾯に遷移する
    *  →error ならログイン失敗のため、response 内の data内の message をエラーメッセージとして画⾯に表⽰する
-   *
-   *
    */
   async loginAdmin(): Promise<void> {
+    //1)
     const response = await axios.post(
       "http://54.203.170.16:8080/ex-emp-api/login",
       {
@@ -84,10 +84,12 @@ export default class LoginAdmin extends Vue {
         password: this.password,
       }
     );
+    //2)
     if (response.data.status === "success") {
       this["$router"].push("/employeeList");
     } else {
-      this.errorMessage = response.data.message;
+      this.errorMessage =
+        "ログイン出来ませんでした(" + response.data.message + ")";
     }
   }
 
