@@ -57,7 +57,7 @@
               <button
                 type="button"
                 class="btn btn-large btn-register waves-effect waves-light"
-                v-onclick:click="registerAdmin()"
+                v-on:click="registerAdmin()"
               >
                 登録
                 <i class="material-icons right">done</i>
