@@ -26,7 +26,6 @@
                 <i class="material-icons prefix">lock_outline</i>
                 <input id="password" type="password" v-model="password" />
                 <label for="password">パスワード</label>
-                {{ password }}
               </div>
             </div>
             <div class="row">

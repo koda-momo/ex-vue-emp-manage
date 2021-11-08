@@ -37,7 +37,7 @@ export default new Vuex.Store({
       //2)
       const payload = response.data;
       //3)
-      context.commit("addEmployeeList", payload);
+      context.commit("showEmployeeList", payload);
     },
   }, // end actions
 
