@@ -17,10 +17,10 @@ const routes: Array<RouteConfig> = [
     path: "/loginAdmin",
     component: () => import("../components/LoginAdmin.vue"),
   },
-  {
-    path: "/employeeList",
-    component: () => import("../components/EmployeeList.vue"),
-  },
+  // {
+  //   path: "/employeeList",
+  //   component: () => import("../components/EmployeeList.vue"),
+  // },
 ];
 
 const router = new VueRouter({

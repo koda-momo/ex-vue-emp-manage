@@ -77,6 +77,7 @@ export default class LoginAdmin extends Vue {
    */
   async loginAdmin(): Promise<void> {
     //1)
+    console.log("loginよばれた");
     const response = await axios.post(
       "http://54.203.170.16:8080/ex-emp-api/login",
       {
@@ -86,8 +87,10 @@ export default class LoginAdmin extends Vue {
     );
     //2)
     if (response.data.status === "success") {
+      console.log("success::::");
       this["$router"].push("/employeeList");
     } else {
+      console.log("error::::");
       this.errorMessage =
         "ログイン出来ませんでした(" + response.data.message + ")";
     }
