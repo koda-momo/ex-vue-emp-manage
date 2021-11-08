@@ -1,4 +1,6 @@
-/**管理者用のクラスです*/
+/**
+ * 管理者用のクラスです.
+ */
 export class Administrator {
   constructor(
     //管理者のID

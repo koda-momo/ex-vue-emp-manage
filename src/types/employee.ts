@@ -1,4 +1,6 @@
-/** 従業員情報クラスです */
+/**
+ * 従業員情報クラスです .
+ */
 export class Employee {
   constructor(
     //従業員ID
