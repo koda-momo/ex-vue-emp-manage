@@ -78,11 +78,11 @@ import axios from "axios";
 export default class RegisterAdmin extends Vue {
   // 始め
 
-  private errorMessage = "";
-  private lastName = "";
-  private firstName = "";
-  private mailAddress = "";
-  private password = "";
+  private errorMessage = ""; //エラー時に表示されるメッセージ
+  private lastName = ""; //姓
+  private firstName = ""; //名
+  private mailAddress = ""; //メールアドレス
+  private password = ""; //パスワード
 
   /**
    * 概要︓管理者情報を登録する.
@@ -104,10 +104,10 @@ export default class RegisterAdmin extends Vue {
     );
     console.dir("response:" + JSON.stringify(response));
     //2)
-    if (response.data.status == "success") {
+    if (response.data.status === "success") {
       this["$router"].push("/loginAdmin");
-    } else if (response.data.status == "error") {
-      this.errorMessage = response.data.message;
+    } else {
+      this.errorMessage = "登録出来ませんでした(" + response.data.message + ")";
     }
   }
 
