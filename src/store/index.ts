@@ -41,7 +41,17 @@ export default new Vuex.Store({
     },
   }, // end actions
 
+  /**
+   * 概要：配列employeesを更新する際に、一度中身を空にするメソッド.
+   * @remarks
+   * deleteCount=配列の中のデータ数
+   */
   mutations: {
+    deleteArray(state) {
+      const deleteCount = state.employees.length + 1;
+      state.employees.splice(0, deleteCount);
+    },
+
     /**
      * 概要：従業員⼀覧情報を作成して state に格納する.
      *

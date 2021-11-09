@@ -3,7 +3,7 @@
     <!-- 始め -->
     <div class="container">
       <div class="row">
-        <form action="employeeList.html">
+        <form>
           <fieldset>
             <legend>従業員情報</legend>
             <table>
@@ -76,8 +76,8 @@
                       id="dependentsCount"
                       type="text"
                       class="validate"
-                      value="3"
                       required
+                      v-model="currentDependentsCount"
                     />
                     <label for="dependentsCount2">扶養人数</label>
                   </div>
@@ -85,7 +85,11 @@
               </tr>
             </table>
 
-            <button class="btn btn-register waves-effect waves-light">
+            <button
+              type="button"
+              class="btn btn-register waves-effect waves-light"
+              v-on:click="update()"
+            >
               更新
             </button>
           </fieldset>
@@ -112,10 +116,10 @@ export default class EmployeeDetail extends Vue {
   /**
  *Vuex ストアの Getter 経由で受け取ったリクエストパラメータの ID から１件の従業員情報を取得する.
  @remarks
- *1)従業員情報のidをnumberに変換して取得する
+ *1)現在表示している従業員情報のidをnumberに変換して取得する
  *2)VuexストアのGetter,getEmployeeByIdメソッド(引数：先程取得したid)→戻り値をcurrentEmployeeに代入
- *3)従業員情報の画像ファイル名をcurrentEmployeeImageに代入
- *4)従業員情報の扶養人数をcurrentDependentsCountに代入
+ *3)現在の従業員情報の画像ファイル名をcurrentEmployeeImageに代入
+ *4)現在の従業員情報の扶養人数をcurrentDependentsCountに代入
  */
   created(): void {
     //1)
@@ -128,6 +132,29 @@ export default class EmployeeDetail extends Vue {
       "http://153.127.48.168:8080/ex-emp-api/img/" + this.currentEmployee.image;
     //4)
     this.currentDependentsCount = this.currentEmployee.dependentsCount;
+  }
+
+  /**
+   * 概要︓扶養⼈数を更新する.
+   * @remarks
+   * response 内の data 内の status が
+   *  →success なら、扶養⼈数を更新成功のため、従業員⼀覧画⾯に遷移する
+   *  →error ならログイン失敗のため、response 内の data内の message をエラーメッセージとして画⾯に表⽰する
+   */
+  async update(): Promise<void> {
+    const response = await axios.post(
+      "http://153.127.48.168:8080/ex-emp-api/employee/update",
+      {
+        id: this.currentEmployee.id,
+        dependentsCount: this.currentDependentsCount,
+      }
+    );
+
+    if (response.data.status === "success") {
+      this["$router"].push("/employeeList");
+    } else {
+      this.errorMessage = "更新出来ませんでした(" + response.data.message + ")";
+    }
   }
   //   終わり
 }

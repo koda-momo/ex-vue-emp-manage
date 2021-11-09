@@ -86,10 +86,8 @@ export default class LoginAdmin extends Vue {
     );
     //2)
     if (response.data.status === "success") {
-      console.log("success::::");
       this["$router"].push("/employeeList");
     } else {
-      console.log("error::::");
       this.errorMessage =
         "ログイン出来ませんでした(" + response.data.message + ")";
     }

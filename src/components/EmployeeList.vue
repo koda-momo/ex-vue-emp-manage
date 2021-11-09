@@ -62,6 +62,7 @@ export default class EmployeeList extends Vue {
    * @remarks 最新の情報に更新する
    */
   created(): void {
+    this["$store"].commit("deleteArray");
     this["$store"].dispatch("getEmployeeList");
   }
 
