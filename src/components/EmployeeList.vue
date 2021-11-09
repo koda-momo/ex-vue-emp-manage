@@ -51,7 +51,7 @@ export default class EmployeeList extends Vue {
   /**
    * 従業員⼀覧を取得し返す.
    * @remarks VuexのgetEmployeesを返す
-   * @returns 従業員一覧の配列
+   * @returns 従業員一覧
    */
   get employees(): Array<Employee> {
     return this["$store"].getters.getEmployees;

@@ -31,7 +31,7 @@ export default new Vuex.Store({
     async getEmployeeList(context) {
       //1)
       const response = await axios.get(
-        "http://54.203.170.16:8080/ex-emp-api/employee/employees"
+        "http://153.127.48.168:8080/ex-emp-api/employee/employees"
       );
       console.dir("response:" + JSON.stringify(response));
       //2)
@@ -110,7 +110,7 @@ export default new Vuex.Store({
         const array = [];
         for (const employee of state.employees) {
           if (employee.id == id) {
-            array.push(id);
+            array.push(employee);
           }
         }
         return array[0];

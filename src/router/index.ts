@@ -21,10 +21,10 @@ const routes: Array<RouteConfig> = [
     path: "/employeeList",
     component: () => import("../components/EmployeeList.vue"),
   },
-  // {
-  //   path: "/employeeDetail/:id",
-  //   component: () => import("../components/EmployeeDetail.vue"),
-  // },
+  {
+    path: "/employeeDetail/:id",
+    component: () => import("../components/EmployeeDetail.vue"),
+  },
 ];
 
 const router = new VueRouter({

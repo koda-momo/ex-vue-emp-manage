@@ -95,7 +95,7 @@ export default class RegisterAdmin extends Vue {
   async registerAdmin(): Promise<void> {
     //1)
     const response = await axios.post(
-      "http://54.203.170.16:8080/ex-emp-api/insert",
+      "http://153.127.48.168:8080/ex-emp-api/insert",
       {
         name: this.lastName + " " + this.firstName,
         mailAddress: this.mailAddress,
