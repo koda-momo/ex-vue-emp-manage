@@ -16,11 +16,9 @@
           <tbody>
             <tr v-for="employee of employees" v-bind:key="employee.id">
               <td>
-                <a href="employeeDetail/employee.id">
-                  <router-link :to="'/employeeDetail/' + employee.id">
-                    {{ employee.name }}</router-link
-                  >
-                </a>
+                <router-link :to="'/employeeDetail/' + employee.id">
+                  {{ employee.name }}</router-link
+                >
               </td>
               <td>{{ employee.hireDate }}</td>
               <td>{{ employee.dependentsCount }}人</td>

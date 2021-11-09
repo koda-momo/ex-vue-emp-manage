@@ -137,11 +137,13 @@ export default class EmployeeDetail extends Vue {
   /**
    * 概要︓扶養⼈数を更新する.
    * @remarks
-   * response 内の data 内の status が
+   *1)axios を使⽤してWebAPIから 情報を取得する
+   *2)response 内の data 内の status が
    *  →success なら、扶養⼈数を更新成功のため、従業員⼀覧画⾯に遷移する
    *  →error ならログイン失敗のため、response 内の data内の message をエラーメッセージとして画⾯に表⽰する
    */
   async update(): Promise<void> {
+    //1)
     const response = await axios.post(
       "http://153.127.48.168:8080/ex-emp-api/employee/update",
       {
@@ -149,7 +151,7 @@ export default class EmployeeDetail extends Vue {
         dependentsCount: this.currentDependentsCount,
       }
     );
-
+    //2)
     if (response.data.status === "success") {
       this["$router"].push("/employeeList");
     } else {

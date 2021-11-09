@@ -11,23 +11,23 @@ const routes: Array<RouteConfig> = [
   // },
   {
     path: "/registerAdmin",
-    component: () => import("../components/RegisterAdmin.vue"),
+    component: () => import("../view/RegisterAdmin.vue"),
   },
   {
     path: "/loginAdmin",
-    component: () => import("../components/LoginAdmin.vue"),
+    component: () => import("../view/LoginAdmin.vue"),
   },
   {
     path: "/employeeList",
-    component: () => import("../components/EmployeeList.vue"),
+    component: () => import("../view/EmployeeList.vue"),
   },
   {
     path: "/employeeDetail/:id",
-    component: () => import("../components/EmployeeDetail.vue"),
+    component: () => import("../view/EmployeeDetail.vue"),
   },
   {
     path: "/logoutAdmin",
-    component: () => import("../components/LogoutAdmin.vue"),
+    component: () => import("../view/LogoutAdmin.vue"),
   },
 ];
 
